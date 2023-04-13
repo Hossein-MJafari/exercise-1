@@ -12,7 +12,7 @@ class Animal:
         self.food = food_name
 
     def move(self):
-        pass
+        return 'Moving...'
 
     def eat(self):
         print(f"{self.name} is eating {self.food.name}.")
@@ -85,19 +85,40 @@ class Elephant(mammals):
 
 
 class Birds(Animal):
-    pass
+    def __init__(self, name, age, weight, height, featherColor, beakType):
+        super().__init__(name, age, weight, height)
+        self.featherColor = featherColor
+        self.beakType = beakType
+
+    def fly(self):
+        super().move()
+        return 'Flying...'
 
 
 class Eagle(Birds):
-    pass
+    def __init__(self, name, age, weight, height, featherColor, beakType, wingLength):
+        super().__init__(name, age, weight, height, featherColor, beakType)
+        self.wingLength = wingLength
 
 
 class Penguin(Birds):
-    pass
+    def __init__(self, name, age, weight, height, featherColor, beakType, swimSpeed):
+        super().__init__(name, age, weight, height, featherColor, beakType)
+        self.swimSpeed = swimSpeed
+    
+    def slideOnBelly(self):
+        super().fly()
+        return "Wwwoooeeeeiiiii, I'm sliding on my belly on ice!"
+    
+
 
 
 class Parrot(Birds):
-    pass
+    def __init__(self, name, age, weight, height, featherColor, beakType):
+        super().__init__(name, age, weight, height, featherColor, beakType)
+
+    def mimicSound(self, sound):
+        return f'{self.name} mimics {sound}.'
 
 
 class Fish(Animal):
