@@ -146,16 +146,28 @@ class Salmon(Fish):
 
 
 class Reptiles(Animal):
-    pass
-
+    def __init__(self, name, age, weight, color):
+        super().__init__(name, age, weight)
+        self.color = color
+    
+    def shedSkin(self):
+        return f'{self.name} is preparing its new skin!'
 
 class Snake(Reptiles):
-    pass
-
+    def __init__(self, name, age, weight, color, venomous: bool):
+        super().__init__(name, age, weight, color)
+        self.venomous = venomous
+    
+    def slither(self):
+        super().move()
+        return f'{self.name} is slithering...'
 
 class Lizard(Reptiles):
-    pass
+    def __init__(self, name, age, weight, color):
+        super().__init__(name, age, weight, color)
 
+    def regenerateTail(self):
+        return f"ahh... {self.name}'s tail got cut again, regenerating..."
 
 class Amphibian(Animal):
     pass
