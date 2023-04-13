@@ -7,7 +7,7 @@ class Animal:
         self.height = height
         self.species = species
         self.food = None
-    
+
     def set_food(self, food_name):
         self.food = food_name
 
@@ -24,16 +24,27 @@ class Animal:
         pass
 
     def sleep(self):
-        pass
+        return f'{self.name} has fallen asleep...'
 
-class Mamals(Animal):
+
+class mammals(Animal):
     def __init__(self, name, age, fur_color, warmblooded):
         super().__init__(name, age)
         self.fur_color = fur_color
         self.warmblooded = warmblooded
-class Dog(Mamals):
-    pass
-class Cat(Mamals):
+
+
+class Dog(mammals):
+    def __init__(self, name, breed):
+        super().__init__(name)
+        self.breed = breed
+        self.sound = 'Woof'
+
+    def bark(self):
+        return self.sound
+
+
+class Cat(mammals):
     def __init__(self, name, breed):
         super().__init__(name)
         self.breed = breed
@@ -41,42 +52,82 @@ class Cat(Mamals):
 
     def meow(self):
         return self.sound
-class Horse(Mamals):
-    pass
-class Cow(Mamals):
-    pass
-class Elephant(Mamals):
-    pass
+
+
+class Horse(mammals):
+    def __init__(self, name, breed, manecolor):
+        super().__init__(name)
+        self.breed = breed
+        self.manecolor = manecolor
+
+    def gallop(self):
+        pass
+
+
+class Cow(mammals):
+    def __init__(self, name, breed, milkproduction):
+        super().__init__(name)
+        self.breed = breed
+        self.milkproduction = milkproduction
+
+    def moo(self):
+        return 'Moooo...'
+
+
+class Elephant(mammals):
+    def __init__(self, name, tuskLength, trunkLength):
+        super().__init__(name)
+        self.tuskLength = tuskLength
+        self.trunkLength = trunkLength
+
+    def trumpet(self):
+        return f'{self.name} is making the trumpet sound.'
 
 
 class Birds(Animal):
     pass
+
+
 class Eagle(Birds):
     pass
+
+
 class Penguin(Birds):
     pass
+
+
 class Parrot(Birds):
     pass
 
 
 class Fish(Animal):
     pass
+
+
 class Shark(Fish):
     pass
+
+
 class Salmon(Fish):
     pass
 
 
 class Reptiles(Animal):
     pass
+
+
 class Snake(Reptiles):
     pass
+
+
 class Lizard(Reptiles):
     pass
 
 
 class Amphibian(Animal):
     pass
+
+
 class Frog(Amphibian):
     pass
 
@@ -89,7 +140,7 @@ class Habitat:
         self.food = None
         self.animals = []
         self.is_clean = True
-    
+
     def add_animal(self, name, age, weight, height, species):
         animal = Animal(name, age, weight, height, species)
         self.animals.append(animal)
@@ -100,6 +151,7 @@ class Habitat:
 
     def clean(self):
         self.is_clean = True
+
 
 class Food:
     def __init__(self, name, calories):
@@ -117,7 +169,7 @@ class CareTaker:
     def add_animal(self, name, age, weight, height, species):
         animal = Animal(name, age, weight, height, species)
         self.animals.append(animal)
-    
+
     def feed_animal(self, food):
         for animal in self.animals:
             animal.set_food(food)
@@ -125,7 +177,6 @@ class CareTaker:
     def clean_habitat(self):
         for animal in self.animals:
             animal.habitat.clean()
-
 
 
 # create objects
