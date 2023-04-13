@@ -122,15 +122,27 @@ class Parrot(Birds):
 
 
 class Fish(Animal):
-    pass
+    def __init__(self, name, age, weight, height, coldBlooded, scaleColor):
+        super().__init__(name, age, weight, height)
+        self.coldBlooded = coldBlooded
+        self.scaleColor = scaleColor
+    
+    def swim(self):
+        super().move()
+        return 'Swimming...'
 
 
 class Shark(Fish):
-    pass
+    def __init__(self, name, age, weight, height, coldBlooded, scaleColor):
+        super().__init__(name, age, weight, height, coldBlooded, scaleColor)
+    
+    def hunt(self):
+        return f'{self.name} just hunted a fish!'
 
 
 class Salmon(Fish):
-    pass
+    def __init__(self, name, age, weight, height, coldBlooded, scaleColor):
+        super().__init__(name, age, weight, height, coldBlooded, scaleColor)
 
 
 class Reptiles(Animal):
