@@ -170,11 +170,23 @@ class Lizard(Reptiles):
         return f"ahh... {self.name}'s tail got cut again, regenerating..."
 
 class Amphibian(Animal):
-    pass
+    def __init__(self, name, age, weight, skinType, metamorphisis:bool):
+        super().__init__(name, age, weight)
+        self.skinType = skinType
+        self.metamorphisis = metamorphisis
+    
+    def breathThroughSkin(self):
+        return 'Who needs lungs?...when you can breath through your skin...'
 
 
 class Frog(Amphibian):
-    pass
+    def __init__(self, name, age, weight, skinType, metamorphisis: bool, sound):
+        super().__init__(name, age, weight, skinType, metamorphisis)
+        self.sound = sound
+    
+    def jump(self):
+        super().move()
+        return f'{self.name} just jumped over there!'
 
 
 class Habitat:
