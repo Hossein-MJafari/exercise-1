@@ -91,13 +91,35 @@ class Food:
 
 
 class CareTaker:
-    pass
+    def __init__(self, name, age, experience):
+        self.name = name
+        self.age = age
+        self.experience = experience
+        self.animals = []
+        self.foods = []
+
+    def add_animal(self, name, age, weight, height, species):
+        animal = Animal(name, age, weight, height, species)
+        self.animals.append(animal)
+
+    def add_food(self, food):
+        self.foods.append(food)
+    
+    def feed_animal():
+        pass
+
+    def clean_habitat():
+        pass
 
 
 
 # create objects
 leaves = Food('Leaves')
 savannah = Habitat('Savannah', 'USA', 'hot-humid')
+jane = CareTaker('Jane', 30, 'professional')
 
 # add animal to habitat
 savannah.add_animal('Giraffe', 5, 100, 4, 'southern-giraffe')
+
+# add animal to caretaker
+jane.add_animal('Lion', 4, 55, 1.5, 'cats')
