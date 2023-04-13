@@ -79,11 +79,18 @@ class Habitat:
         self.climate = climate
         self.food = None
         self.animals = []
+        self.is_clean = True
     
     def add_animal(self, name, age, weight, height, species):
         animal = Animal(name, age, weight, height, species)
         self.animals.append(animal)
+        self.is_clean = False
 
+    def set_food(self, food):
+        self.food = food
+
+    def clean(self):
+        self.is_clean = True
 
 class Food:
     def __init__(self, name):
@@ -96,20 +103,18 @@ class CareTaker:
         self.age = age
         self.experience = experience
         self.animals = []
-        self.foods = []
 
     def add_animal(self, name, age, weight, height, species):
         animal = Animal(name, age, weight, height, species)
         self.animals.append(animal)
-
-    def add_food(self, food):
-        self.foods.append(food)
     
-    def feed_animal():
-        pass
+    def feed_animal(self, food):
+        for animal in self.animals:
+            animal.set_food(food)
 
-    def clean_habitat():
-        pass
+    def clean_habitat(self):
+        for animal in self.animals:
+            animal.habitat.clean()
 
 
 
@@ -123,3 +128,15 @@ savannah.add_animal('Giraffe', 5, 100, 4, 'southern-giraffe')
 
 # add animal to caretaker
 jane.add_animal('Lion', 4, 55, 1.5, 'cats')
+
+# set food for habitat
+savannah.set_food(leaves)
+
+# set food for animal
+giraffe = savannah.animals[0]
+giraffe.set_food(leaves)
+lion = jane.animals[0]
+lion.set_food(leaves)
+
+# caretaker feeds the animals
+jane.feed_animal(leaves)
