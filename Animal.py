@@ -27,11 +27,20 @@ class Animal:
         pass
 
 class Mamals(Animal):
-    pass
+    def __init__(self, name, age, fur_color, warmblooded):
+        super().__init__(name, age)
+        self.fur_color = fur_color
+        self.warmblooded = warmblooded
 class Dog(Mamals):
     pass
 class Cat(Mamals):
-    pass
+    def __init__(self, name, breed):
+        super().__init__(name)
+        self.breed = breed
+        self.sound = 'Meow'
+
+    def meow(self):
+        return self.sound
 class Horse(Mamals):
     pass
 class Cow(Mamals):
@@ -93,8 +102,9 @@ class Habitat:
         self.is_clean = True
 
 class Food:
-    def __init__(self, name):
+    def __init__(self, name, calories):
         self.name = name
+        self.calories = calories
 
 
 class CareTaker:
@@ -119,7 +129,7 @@ class CareTaker:
 
 
 # create objects
-leaves = Food('Leaves')
+leaves = Food('Leaves', 100)
 savannah = Habitat('Savannah', 'USA', 'hot-humid')
 jane = CareTaker('Jane', 30, 'professional')
 
@@ -130,13 +140,12 @@ savannah.add_animal('Giraffe', 5, 100, 4, 'southern-giraffe')
 jane.add_animal('Lion', 4, 55, 1.5, 'cats')
 
 # set food for habitat
-savannah.set_food(leaves)
-
+savannah.set_food(leaves.name)
 # set food for animal
 giraffe = savannah.animals[0]
-giraffe.set_food(leaves)
+giraffe.set_food(leaves.name)
 lion = jane.animals[0]
-lion.set_food(leaves)
+lion.set_food(leaves.name)
 
 # caretaker feeds the animals
-jane.feed_animal(leaves)
+jane.feed_animal(leaves.name)
